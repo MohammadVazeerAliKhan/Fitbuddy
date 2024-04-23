@@ -76,7 +76,6 @@ const GroupPage = () => {
                         key={index}
                         style={{
                             display: 'flex',
-                            justifyContent: 'space-between',
                             minWidth: '350px',
                             width: '48%',
                             alignItems: 'center',
@@ -89,18 +88,10 @@ const GroupPage = () => {
                         <img
                             src={`${member.pic}`}
                             alt={`${member.name}`}
-                            style={{ height: '80px' }}
+                            style={{ height: '40px', width: '40px' }}
                         />
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'space-evenly',
-                            }}
-                        >
                             <h2>{member.name}</h2>
-                            <p>{member.bio ? member.bio : 'Stay Fit'}</p>
-                        </div>
+                        
                     </div>
                 ))}
             </div>

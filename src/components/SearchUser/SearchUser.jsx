@@ -170,7 +170,7 @@ const UserList = ({
             }}
             onClick={handleAddUsersAPI}
           >
-            <strong>SAVE</strong>
+            <strong>Save</strong>
           </button>
         )}
       </div>
@@ -187,25 +187,23 @@ const UserList = ({
         className="user-list"
         style={{
           overflowY: "scroll",
-          border: "2px solid white",
+          // border: "2px solid white",
           height: "80%",
-          width: "90%",
+          width: "100%",
         }}
       >
         {filteredUsers.map((user) => (
           <li key={user._id} className="user-item">
-            <img src={user.pic} alt={user.name} className="user-picture" />
             <div className="user-details">
-              <div>
+              
+              <img src={user.pic} alt={user.name} className="user-picture" />
+
                 <h3>{user.name}</h3>
-                <p>Age: {user.age}</p>
-                <p>{user.bio}</p>
-              </div>
-              <button
+                <button
                 onClick={() => handleAddUserToGroup(user)}
                 style={{
                   borderRadius: "50%",
-                  padding: "2px 4px",
+                  padding: "0px 2px",
                   color: "lightgreen",
                   border: "1px solid lightgreen",
                   backgroundColor: "black",
@@ -214,7 +212,9 @@ const UserList = ({
                 }}
               >
                 +
-              </button>
+    </button>
+              
+              
             </div>
           </li>
         ))}

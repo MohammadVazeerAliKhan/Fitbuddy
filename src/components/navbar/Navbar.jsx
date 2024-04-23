@@ -67,7 +67,7 @@ const Navbar = ({ logoutUser }) => {
     <>
       <AppBar
         position="fixed"
-        sx={{ background: isNotHome ? "black" : "inherit" }}
+        sx={{ backgroundColor: 'white' }}
       >
         <Toolbar>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
@@ -91,14 +91,14 @@ const Navbar = ({ logoutUser }) => {
                   to="/profile"
                   style={{
                     textDecoration: "none",
-                    color: isNotHome ? "white" : "black",
+                    color: "black",
                     fontSize: "1rem",
                   }}
                 >
                   <strong>PROFILE</strong>
                 </Link>
                 <Button onClick={handleLogout}>
-                  <strong style={{ color: isNotHome ? "white" : "black" }}>
+                  <strong style={{ color: "black" }}>
                     Logout
                   </strong>
                 </Button>
@@ -106,12 +106,12 @@ const Navbar = ({ logoutUser }) => {
             ) : (
               <>
                 <Button onClick={handleOpenSignupModal}>
-                  <strong style={{ color: isNotHome ? "white" : "black" }}>
+                  <strong style={{ color:"black" }}>
                     Signup
                   </strong>
                 </Button>
                 <Button onClick={handleOpenLoginModal}>
-                  <strong style={{ color: isNotHome ? "white" : "black" }}>
+                  <strong style={{ color: "black" }}>
                     Login
                   </strong>
                 </Button>
@@ -124,7 +124,7 @@ const Navbar = ({ logoutUser }) => {
             edge="end"
             aria-label="menu"
             sx={{
-              color: isNotHome ? "white" : "black",
+              color:"black",
               display: { xs: "block", sm: "none" },
             }}
             onClick={handleMenuOpen}

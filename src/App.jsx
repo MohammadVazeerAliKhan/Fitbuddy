@@ -79,7 +79,7 @@ const App = () => {
           /* isLoggedIn={user ? true : false}*/ logoutUser={handleLogout}
         />
         <ToastContainer position="bottom-center" />
-        <video autoPlay muted loop id="bg-video">
+        {/* <video autoPlay muted loop id="bg-video">
           <source
             // src="https://videos.pexels.com/video-files/4325592/4325592-uhd_4096_2160_25fps.mp4"
             // src="https://videos.pexels.com/video-files/5319099/5319099-uhd_3840_2160_25fps.mp4"
@@ -87,7 +87,7 @@ const App = () => {
             type="video/mp4"
           />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
 
         <div className="website-background">
           <Routes>
