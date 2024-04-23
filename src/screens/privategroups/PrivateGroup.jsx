@@ -21,7 +21,7 @@ const PrivateGroup = () => {
     const [challenges, setChallenges] = useState([]);
     const [searchableUsers, setSearchableUsers] = useState([]);
     const [alreadyMember, setAlreadyMember] = useState(false);
-    const [inviteNumber, setInviteNumber] = useState(null)
+    const [inviteNumber, setInviteNumber] = useState(null);
     //   const [isGroupUpdated, setIsGroupUpdated] = useState(false);
 
     const handleGetAllData = async () => {
@@ -127,7 +127,7 @@ const PrivateGroup = () => {
             const body = { users: [user.id] };
 
             const { data } = await axios.post(`${API_URL}/groups/${id}/members`, body, config);
-            console.log('data: dshjebjervhrhr  ', data);
+            // console.log('data: dshjebjervhrhr  ', data);
             if (data) {
                 // console.log("1", selectedUsers, groupMembers);
                 setGroupMembers(data.data.users);
@@ -197,14 +197,13 @@ const PrivateGroup = () => {
         );
     }
 
-const handleWhatsappInvite = async () => {
-    const groupLink = `https://fitbuddy-nine.vercel.app/api/privategroup/${id}`
-    const message=`Welcome to fitbuddy, I invite to join my group ${groupLink} and be part of my fitness journey tracking. `
-    const url = `https://wa.me/${inviteNumber}?text=${message}`;
-    toast.success('Invite sent');
-    return window.open(url, '_blank');
-
-}
+    const handleWhatsappInvite = async () => {
+        const groupLink = `https://fitbuddy-nine.vercel.app/api/privategroup/${id}`;
+        const message = `Welcome to fitbuddy, I invite to join my group ${groupLink} and be part of my fitness journey tracking. `;
+        const url = `https://wa.me/${inviteNumber}?text=${message}`;
+        toast.success('Invite sent');
+        return window.open(url, '_blank');
+    };
 
     return (
         <div
@@ -258,7 +257,13 @@ const handleWhatsappInvite = async () => {
                             <img
                                 src={groupData.icon}
                                 alt="Group Icon"
-                                style={{ maxWidth: '150px', width: '60%', maxHeight: '150px', border: '1px solid gold', borderRadius: '10px' }}
+                                style={{
+                                    maxWidth: '150px',
+                                    width: '60%',
+                                    maxHeight: '150px',
+                                    border: '1px solid gold',
+                                    borderRadius: '10px',
+                                }}
                             />
                             <p>{groupData.description}</p>
                             <p>Members Joined: {groupMembers.length}</p>
@@ -346,47 +351,46 @@ const handleWhatsappInvite = async () => {
                                 </div>
                             )}
                         </div>
-                        
-                        <div className="box invite-friends">
-                            <h2 style={{paddingBottom:'0.6rem'}}>Invite Friends</h2>
-                            <form onSubmit={handleWhatsappInvite}>
-                            <input
-                                type="tel"
-                                placeholder="Add Phone Number"
-                                pattern="[0-9]{10}"
-                                value={inviteNumber}
-                                onChange={(e) => setInviteNumber(e.target.value)}
-                                style={{
-                                    fontWeight: 'bold',
-                                    width: '70%',
-                                    minWidth: '200px',
-                                    margin: 'auto',
-                                    borderRadius: '0.6rem 0 0 0.6rem',
-                                    padding: '4px 8px',
-                                }}
-                            />
-                            <button
-                                className="send-invite-btn"
-                                type="submit"
-                                style={{
-                                    borderRadius: '0 0.6rem 0.6rem 0',
-                                    padding: '4px 8px',
-                                    margin: 'auto',
-                                }}
-                            >
-                                <strong>Send</strong>
-                            </button>
-                            </form>
 
+                        <div className="box invite-friends">
+                            <h2 style={{ paddingBottom: '0.6rem' }}>Invite Friends</h2>
+                            <form onSubmit={handleWhatsappInvite}>
+                                <input
+                                    type="tel"
+                                    placeholder="Add Phone Number"
+                                    pattern="[0-9]{10}"
+                                    value={inviteNumber}
+                                    onChange={(e) => setInviteNumber(e.target.value)}
+                                    style={{
+                                        fontWeight: 'bold',
+                                        width: '70%',
+                                        minWidth: '200px',
+                                        margin: 'auto',
+                                        borderRadius: '0.6rem 0 0 0.6rem',
+                                        padding: '4px 8px',
+                                    }}
+                                />
+                                <button
+                                    className="send-invite-btn"
+                                    type="submit"
+                                    style={{
+                                        borderRadius: '0 0.6rem 0.6rem 0',
+                                        padding: '4px 8px',
+                                        margin: 'auto',
+                                    }}
+                                >
+                                    <strong>Send</strong>
+                                </button>
+                            </form>
                         </div>
                         {showCalender && (
-                        <ChallengeBoxPrivateGroup
-                            showCalender={showCalender}
-                            challenges={challenges}
-                            setChallenges={setChallenges}
-                            id={id}
-                        />
-                    )}
+                            <ChallengeBoxPrivateGroup
+                                showCalender={showCalender}
+                                challenges={challenges}
+                                setChallenges={setChallenges}
+                                id={id}
+                            />
+                        )}
 
                         {challenges.length === 0 && (
                             <h1>
@@ -403,9 +407,7 @@ const handleWhatsappInvite = async () => {
                                 </button>
                             </h1>
                         )}
-
                     </div>
-                    
                 </div>
             </main>
         </div>

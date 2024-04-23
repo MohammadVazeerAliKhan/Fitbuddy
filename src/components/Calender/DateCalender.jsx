@@ -51,7 +51,8 @@ export default function DateCalendarServerRequest({ progress, challenge }) {
 
     let dataFromServer = progress.data.filter((val) => val.completed === true);
 
-    const highlightedDays = useMemo(() => {
+    const [highlightedDays, setHighlitedDays] = useState([]);
+    useEffect(() => {
         const filteredData = dataFromServer
             .filter(
                 (item) =>
@@ -65,9 +66,10 @@ export default function DateCalendarServerRequest({ progress, challenge }) {
             )
             .filter((item) => dayjs(item.date).isBefore(currentDateLocalISOString, 'day'))
             .map((item) => dayjs(item.date).toISOString());
-        console.log('memo', dataFromServer);
-        return filteredData;
-    }, [dataFromServer, startDate, endDate, challenge, progress]);
+        // console.log('memo', dataFromServer);
+        // console.log(progress);
+        setHighlitedDays(filteredData);
+    }, [startDate, endDate, progress, challenge]);
 
     const handleMonthChange = () => {
         setIsLoading(true);
