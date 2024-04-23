@@ -6,8 +6,8 @@ export const groupsSlice = createSlice({
   name: "groups",
   initialState: [
     {
-      groupName: "Weight Training",
-      imageUrl: "/Assets/Images/weightTraining.jpg",
+      groupName: "Gymnastics",
+      imageUrl: "/Assets/Images/weightTraining.png",
       videoUrl:
         "https://videos.pexels.com/video-files/4745810/4745810-hd_1920_1080_25fps.mp4",
       groupTitle: "Strength Forge",
@@ -16,7 +16,7 @@ export const groupsSlice = createSlice({
     },
     {
       groupName: "Meditate",
-      imageUrl: "/Assets/Images/meditate.jpg",
+      imageUrl: "/Assets/Images/meditate.png",
       groupTitle: "Mindful Meditation",
       videoUrl:
         "https://videos.pexels.com/video-files/7521693/7521693-hd_1920_1080_25fps.mp4",
@@ -25,7 +25,7 @@ export const groupsSlice = createSlice({
     },
     {
       groupName: "Sports",
-      imageUrl: "/Assets/Images/sport.jpg",
+      imageUrl: "/Assets/Images/sports.png",
       groupTitle: "Sporty Squad",
       videoUrl:
         "https://videos.pexels.com/video-files/9240783/9240783-hd_1920_1080_25fps.mp4",
@@ -34,7 +34,7 @@ export const groupsSlice = createSlice({
     },
     {
       groupName: "Cardio",
-      imageUrl: "/Assets/Images/cardio.jpg",
+      imageUrl: "/Assets/Images/cardio.png",
       groupTitle: "Cardio Craze",
       videoUrl:
         "https://videos.pexels.com/video-files/6525502/6525502-hd_1920_1080_25fps.mp4",
@@ -43,7 +43,7 @@ export const groupsSlice = createSlice({
     },
     {
       groupName: "Yoga",
-      imageUrl: "/Assets/Images/yoga.jpg",
+      imageUrl: "/Assets/Images/yoga.png",
       groupTitle: "Yoga Bliss",
       videoUrl:
         "https://videos.pexels.com/video-files/8480432/8480432-hd_1920_1080_25fps.mp4",
@@ -53,7 +53,7 @@ export const groupsSlice = createSlice({
     },
     {
       groupName: "Dance",
-      imageUrl: "/Assets/Images/dance.jpg",
+      imageUrl: "/Assets/Images/dance.png",
       groupTitle: "Dance Fusion",
       videoUrl:
         "https://videos.pexels.com/video-files/2795737/2795737-uhd_3840_2160_25fps.mp4",
@@ -62,8 +62,9 @@ export const groupsSlice = createSlice({
     },
 
     {
-      groupName: "Strength Training",
-      imageUrl: "/Assets/Images/strengthTraining.jpg",
+      groupName: "Resistance",
+      imageUrl: "/Assets/Images/strengthTraining.png"
+      ,
       videoUrl:
         "https://videos.pexels.com/video-files/7676732/7676732-uhd_4096_2160_25fps.mp4",
       // "https://videos.pexels.com/video-files/6702520/6702520-hd_2048_1080_25fps.mp4",
@@ -72,8 +73,8 @@ export const groupsSlice = createSlice({
         "Get stronger and more powerful with our challenging strength training exercises.",
     },
     {
-      groupName: "Weight Loss",
-      imageUrl: "/Assets/Images/weightLoss.jpg",
+      groupName: "Slim Down",
+      imageUrl: "/Assets/Images/weightloss.png",
       videoUrl:
         "https://videos.pexels.com/video-files/5310858/5310858-uhd_3840_2160_25fps.mp4",
       // "https://videos.pexels.com/video-files/7987315/7987315-hd_1080_1920_30fps.mp4",

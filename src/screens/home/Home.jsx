@@ -280,42 +280,7 @@ const Home = () => {
           fontFamily: "Roboto",
         }}
       >
-        {/* <header
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "8px",
-            justifyContent: "center",
-            alignItems: "center",
-            fontFamily: "Roboto",
-            fontWeight: "bold",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "62px",
-              lineHeight: "72.66px",
-              marginBottom: "20px",
-              textAlign: "center",
-            }}
-          >
-            JOIN OUR
-          </p>
-          <p
-            style={{
-              backgroundClip: "text",
-              color: "transparent",
-              WebkitBackgroundClip: "text",
-              marginBottom: "20px",
-              textAlign: "center",
-              fontSize: "100px",
-              lineHeight: "118px",
-              backgroundImage: "linear-gradient(to bottom, #ffffff,#ffdb17)",
-            }}
-          >
-            FITBUDDY
-          </p>
-        </header> */}
+
         <GroupBox />
       </section>
       {/* {!user.isLoggedIn && ( */}
@@ -323,7 +288,7 @@ const Home = () => {
         id="groups-container"
         style={{ minHeight: "60vh", paddingTop: "6vh" }}
       >
-        <h2 style={{ textAlign: "center", fontSize: "1.8rem", color: "black" }}>
+        <h2 style={{ textAlign: "center", fontSize: "1rem", color: "black", padding: '10px'}}>
           Join our active community of fitness enthusiasts and explore public
           groups!
         </h2>
@@ -333,9 +298,9 @@ const Home = () => {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          gap={4}
+          gap={1}
           p={2}
-          sx={{ flexWrap: "wrap" }}
+          sx={{ flexWrap: "wrap"}}
         >
           {groupsList.map((group, index) => (
             <GroupItem key={index} group={group} id={index} />

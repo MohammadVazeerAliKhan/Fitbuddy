@@ -16,7 +16,6 @@ const Footer = () => {
             return toast.warning('Please enter credentials!!');
         const config = {
             headers: {
-                // Authorization: Bearer ${token},
                 'Content-Type': 'application/json',
             },
         };
@@ -31,7 +30,7 @@ const Footer = () => {
             toast.success(data.message);
         } catch (err) {
             // console.log(err.stack);
-            toast.error('Please try Later!!!');
+            toast.error('Please try later!!!');
         }
     };
     return (
@@ -124,6 +123,7 @@ const Footer = () => {
                             rows="5"
                             placeholder="Message"
                             value={contactMessage}
+                            required
                             style={{
                                 padding: '0.2rem 0.6rem',
                                 backgroundColor: 'black',
@@ -154,13 +154,7 @@ const Footer = () => {
                             Submit
                         </button>
                     </form>
-                    {/* <div style={{ width: "35%", minWidth: "350px" }}>
-            <img
-              src="/Assets/Images/contactUsImage.png"
-              alt="contactUs"
-              style={{ width: "100%", height: "100%" }}
-            />
-          </div> */}
+                    
                 </div>
             </section>
         </footer>

@@ -8,7 +8,8 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
-import NavbarLogo from "./NavbarLogo.jsx";
+// import NavbarLogo from "./NavbarLogo.jsx";
+import {NavLink} from 'react-router-dom';
 
 import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation, Link } from "react-router-dom";
@@ -70,8 +71,12 @@ const Navbar = ({ logoutUser }) => {
         sx={{ backgroundColor: 'white' }}
       >
         <Toolbar>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            <NavbarLogo webLogo={webLogo} />
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1, display: 'flex', alignItems:'center' }}>
+          <NavLink
+      to="/"
+    >            <img src='Assets/Images/logo.png' alt='fitbuddylogo'  height="50px"/>
+
+    </NavLink>
           </Typography>
 
           <Typography

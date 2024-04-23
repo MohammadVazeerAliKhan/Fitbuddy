@@ -28,9 +28,9 @@ const GroupBox = () => {
         flexWrap: "wrap",
       }}
     >
-      <div className="groupbox" style={{ minWidth: "340px" }}>
-        <h1 style={{ fontSize: "2.4rem" }}>Private Group</h1>
-        <p style={{ fontSize: "1.4rem", textAlign: "center" }}>
+      <div className="groupbox" style={{ minWidth: "320px" }}>
+        <h1 style={{ fontSize: "1.8rem" }}>Private Group</h1>
+        <p style={{ fontSize: "1.3rem", textAlign: "center" }}>
           Create groups with your buddies
         </p>
         <div className="arrow-link">
@@ -40,9 +40,9 @@ const GroupBox = () => {
           />
         </div>
       </div>
-      <div className="groupbox" style={{ minWidth: "340px" }}>
-        <h1 style={{ fontSize: "2.4rem" }}>Public Group</h1>
-        <p style={{ fontSize: "1.4rem", textAlign: "center" }}>
+      <div className="groupbox" style={{ minWidth: "320px" }}>
+        <h1 style={{ fontSize: "1.8rem" }}>Public Group</h1>
+        <p style={{ fontSize: "1.3rem", textAlign: "center" }}>
           Explore open groups to join
         </p>
         <div className="arrow-link">

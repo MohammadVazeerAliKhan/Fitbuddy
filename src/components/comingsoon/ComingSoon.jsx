@@ -25,7 +25,7 @@ const ComingSoon = () => {
         style={{
           color: "black",
           backgroundColor: "inherit",
-          padding: "0.2rem 0.8rem",
+          padding: "0.1rem 0.4rem",
           borderRadius: "0.7rem",
         }}
         onClick={handleNavHome}
