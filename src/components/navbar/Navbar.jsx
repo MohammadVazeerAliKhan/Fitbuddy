@@ -13,7 +13,7 @@ import {NavLink} from 'react-router-dom';
 
 import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation, Link } from "react-router-dom";
-import webLogo from "/Assets/Images/websitelogo.png";
+
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../slices/authSlice";
 import LoginModal from "../../screens/login/LoginModal";
