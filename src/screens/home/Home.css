@@ -1,7 +1,38 @@
-#video-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vh;
+.homepage-quote{
+    font-size: 4em;
+    text-align: center;
+    padding: 10px 80px;
+
+}
+
+.homepage-container{
+    padding-top: 11vh;
+}
+
+.publicgroups-heading{
+    text-align:center;
+     font-size: 2.4em;
+      padding: 10px
+}
+
+@media screen and (max-width: 940px) {
+    .homepage-quote{
+        font-size: 2.8em;
+        padding: 10px
+    }   
+    
+.publicgroups-heading{
+     font-size: 1.8em;
+     
+}
+}
+
+
+
+@media screen and (max-width: 562px) {
+    .homepage-quote{
+        font-size: 1.7em;
+    }   .publicgroups-heading{
+        font-size: 1.2em;
+   }
 }

@@ -84,6 +84,16 @@ const LoginModal = ({ open, onClose, navToSignUp }) => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    // var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+    // let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+    let regex = new RegExp('/^\w+@[a-zA-Z_]+\.(com)$/');
+    console.log(regex.test(email))
+    if(!regex.test(email)){
+    
+      return toast.warning('Invalid Email address');
+      
+    }
     try {
       const { data } = await axios.post(
         `https://halos-backend-test-es6.onrender.com/api/user/login`,
@@ -138,6 +148,7 @@ const LoginModal = ({ open, onClose, navToSignUp }) => {
       localStorage.removeItem("password");
     }
   };
+
 
   return (
     <Modal
@@ -211,6 +222,7 @@ const LoginModal = ({ open, onClose, navToSignUp }) => {
             alignItems="center"
             wrap="wrap"
             marginBottom={2}
+            sx={{paddingBottom:'1vh'}}
           >
             {/* Forgot password */}
             <Grid item>
@@ -223,29 +235,31 @@ const LoginModal = ({ open, onClose, navToSignUp }) => {
               </Button>
             </Grid>
           </Grid>
-          <GoogleOAuthProvider clientId="79886345736-m9qkupb4jaqp34ukqkibtirsjot6u7tc.apps.googleusercontent.com">
+          <hr />
+          <div style={{display:'flex', justifyContent:'center', alignItems:'center', paddingTop: '1vh'}}>
+          <GoogleOAuthProvider clientId="79886345736-m9qkupb4jaqp34ukqkibtirsjot6u7tc.apps.googleusercontent.com" >
             <GoogleLogin
               buttonText="Login with Google"
               onSuccess={handleLoginSuccess}
               onFailure={handleLoginFailure}
               scope="profile email"
-              // onError={() => {
-              //   console.log("Login Failed");
-              // }}
+             
             />
           </GoogleOAuthProvider>
+          </div>
+          
 
           {errorMessage && (
             <Typography variant="body2" color="error" gutterBottom>
               {errorMessage}
             </Typography>
           )}
-          <Typography variant="body1" gutterBottom>
+          <Typography variant="body1" gutterBottom sx={{paddingTop:'2vh', textAlign:'center'}}>
             Don't have an account?{" "}
             {/* <Link to="/register">
               <strong>Register</strong>
             </Link> */}
-            <Typography variant="contained" onClick={navToSignUp}>
+            <Typography variant="contained" onClick={navToSignUp} sx={{cursor: 'pointer'}}>
               <strong>Sign Up</strong>
             </Typography>
           </Typography>

@@ -78,7 +78,9 @@ const CreateChallenge = () => {
     // Convert the previous date to ISO string
     const startDateISOString = createDateFormat(startDate);
     const endDateISOString = createDateFormat(endDate);
-
+    if(!challengeTitle || !challengeDescription || !startDate || !endDate){
+        return toast.warning('Please fill all the required fields')
+    }
     let body = {
       startDate: startDateISOString.split("T")[0],
       endDate: endDateISOString.split("T")[0],
@@ -255,10 +257,11 @@ const CreateChallenge = () => {
                 label="Start Date"
                 type="date"
                 id="startDate"
+                required
                 style={{ marginBottom: 1, fontWeight: "bold" }}
                 value={startDate ? startDate.toISOString().split("T")[0] : ""}
                 onChange={handleStartDateChange}
-                min={new Date().toISOString().split("T")[0]} // Set min attribute to today's date
+                min={new Date(Date.now()).toISOString().split("T")[0]} // Set min attribute to today's date
               />
             </div>
             <div style={{ minWidth: "250px", width: "90%" }}>
@@ -267,6 +270,7 @@ const CreateChallenge = () => {
                 label="End Date"
                 type="date"
                 id="endDate"
+                required
                 style={{ mb: 1, fontWeight: "bold" }}
                 value={endDate ? endDate.toISOString().split("T")[0] : ""}
                 onChange={handleEndDateChange}

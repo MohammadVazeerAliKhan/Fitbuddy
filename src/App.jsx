@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/navbar/Navbar.jsx';
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
-
+import ContactUs from './components/footer/Footer.jsx'
 import { jwtDecode } from 'jwt-decode';
 import Home from './screens/home/Home.jsx';
 import Profile from './screens/profile/Profile.jsx';
@@ -121,6 +121,7 @@ const App = () => {
                         {/* {user ? (
                             <> */}
                         {/* <Route path="/profile" element={<Profile />} /> */}
+                        <Route path="/contactus" element={<ContactUs />} />
                         <Route path="/editprofile" element={<EditProfile />} />
                         <Route path="/publicgroups" element={<ComingSoon />} />
                         <Route path="/profile" element={<ProtectedRoutes />}>

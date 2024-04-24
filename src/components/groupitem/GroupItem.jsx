@@ -9,14 +9,14 @@ const GroupItem = ({ group, id }) => {
   };
 
   return (
-    <button      className="groupitem-container" style={{display: 'flex', cursor: 'pointer',     flexDirection: 'column', gap:'5px', border: 'none', borderRadius: '10px', width:'75px', alignItems: 'center',
+    <button      className="groupitem-container" style={{display: 'flex',backgroundColor:'#f4f4f6',    flexDirection: 'column', gap:'5px', border: 'none', borderRadius: '10px', minWidth:'75px', width: '27%', alignItems: 'center',
   }}
               
           onClick={handleExploreGroup}
         >
-          <img src={group.imageUrl} alt="groupIcon" height='75px' width='75px' style={{borderRadius: '10px 10px 0 0',}} />
+          <img src={group.imageUrl} alt="groupIcon" width='50%'style={{borderRadius: '10px 10px 0 0',cursor:'pointer', minWidth: '75px', minHeight: '75px',}} />
           
-        <strong style={{fontSize:'0.8rem'}}>{group.groupName}</strong>
+        <strong style={{fontSize:'0.8rem', cursor:'pointer',}}>{group.groupName}</strong>
         </button>
 
   );

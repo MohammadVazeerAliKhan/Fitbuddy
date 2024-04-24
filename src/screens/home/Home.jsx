@@ -105,75 +105,19 @@ const Home = () => {
     <div
       id="homepage-container"
       className="homepage-container"
-      style={{ color: "white", paddingTop: "5rem" }}
+      
     >
       {!user.isLoggedIn && (
-        <section
-          id="aboutus-container"
-          style={{
-            padding: "1.25rem",
-            // minHeight: "40vh",
-          }}
-        >
-          <div
-            style={{
-              backgroundClip: "text",
-              color: "transparent",
-              WebkitBackgroundClip: "text",
-              marginBottom: "2rem",
-              textAlign: "center",
-              backgroundImage:
-                "linear-gradient(to bottom, #927E13,#70E916,#FFDB17)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+          <h2 className='homepage-quote'
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-                justifyContent: "center",
-                gap: "0",
-              }}
-            >
-              <h1
-                style={{
-                  fontSize: "2.5vw",
-                  padding: "0",
-                  margin: "0",
-                }}
-              >
-                We at
-              </h1>
-              <h1
-                style={{
-                  fontSize: "6vw",
-                  padding: "0",
-                  margin: "0",
-                }}
-              >
-                FIT
-              </h1>
-            </div>
-            <h1 style={{ fontSize: "10vw" }}>BUDDY</h1>
-          </div>
-          <h2
-            style={{ textAlign: "center", fontSize: "1.8rem", color: "black" }}
-          >
-            "Create groups, challenges and invite friends to stay consistent
-            together in a vibrant community and empower your fitness journey"
+            Stay healthy and active with your friends and loved ones
           </h2>
-        </section>
       )}
       {user.isLoggedIn && (
         <>
           <h1 style={{ textAlign: "center", color: "black" }}>
-            Welcome to fitbuddy, <em>{user?.name}</em>{" "}
+            Welcome to fitbuddy <em>{user?.name}</em>{" "}
           </h1>
-          {/* <p>{Add some api to fetch fitness quotes to display after user login }</p> */}
           <h2 style={{ textAlign: "center", color: 'black' }}>
             Groups : {privateGroups.length}
           </h2>
@@ -189,96 +133,24 @@ const Home = () => {
           >
             {loadingGroup && <Loading />}
             {privateGroups.map((group, index) => (
-              <Box
-                key={index}
-                className="groupitem-container"
-                width="20vw"
-                minWidth="250px"
-                minHeight="250px"
-                maxHeight="30vh"
-                display="flex"
-                alignItems="center"
-                gap={4}
-                // bgcolor={"white"}
-                color={"white"}
-                sx={{
-                  flexDirection: "column",
-                  borderRadius: "20px",
-                  justifyContent: "space-between",
-                  position: "relative", // Ensure the overlay is positioned relative to the box
-                  overflow: "hidden", // Hide overflow to ensure the video is contained within the box
+
+
+
+              <button  
+                key={index}    className="groupitem-container" style={{display: 'flex', cursor: 'pointer',     flexDirection: 'column', gap:'5px', border: 'none', borderRadius: '10px', minWidth:'75px', width: '22%', alignItems: 'center',
                 }}
+                onClick={() => handleNavigatePrivateGroup(group._id)}
               >
-                {/* Video */}
-                <img
-                  // src={group.icon}
-                  src={group.icon}
-                  autoPlay
-                  loop
-                  muted
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    filter: "brightness(50%)", // Adjust brightness to 50%
-                    zIndex: 1, // Ensure the video is behind the content
-                  }}
-                ></img>
-
-                {/* Content */}
-                <div
-                  style={{
-                    position: "relative", // Ensure content is positioned relative to the box
-                    width: "20vw",
-                    minWidth: "250px",
-                    minHeight: "250px",
-                    maxHeight: "30vh",
-                    zIndex: 2, // Ensure content is above the video
-                    textAlign: "center",
-                    color: "black", // Set text color
-                    // color: 'white', // Set text color
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-
-                    padding: "8px 4px",
-                    height: "100%",
-                  }}
-                >
-                  <h2 style={{color: 'white'}}>{group.name}</h2>
-                  <button
-                    onClick={() => handleNavigatePrivateGroup(group._id)}
-                    style={{
-                      padding: "3px 20px",
-                      alignSelf: "center",
-                      border: "2px solid white",
-                      backgroundColor: "black",
-                      color: "white",
-                      borderRadius: "20px",
-                      transition: "box-shadow 0.1s",
-                      "&:hover": {
-                        boxShadow: "0px 3px 6px rgba(255, 255, 255, 0.5)",
-                      },
-                    }}
-                  >
-                    <strong>Explore</strong>
-                  </button>
-                </div>
-              </Box>
-            ))}
+                <img src={group.icon} alt="groupIcon" width='50%' style={{borderRadius: '10px 10px 0 0', minWidth: '75px', minHeight: '75px',}} />
+          
+                <strong style={{fontSize:'0.8rem'}}>{group.name}</strong>
+              </button>))}
           </Box>
         </>
       )}
       <section
         id="publicprivategroupnav"
-        style={{
-          minHeight: "60vh",
-          marginTop: "5vh",
-          fontFamily: "Roboto",
-        }}
+        
       >
 
         <GroupBox />
@@ -286,9 +158,9 @@ const Home = () => {
       {/* {!user.isLoggedIn && ( */}
       <section
         id="groups-container"
-        style={{ minHeight: "60vh", paddingTop: "6vh" }}
+        style={{ paddingTop: '2vh'}}
       >
-        <h2 style={{ textAlign: "center", fontSize: "1rem", color: "black", padding: '10px'}}>
+        <h2 className="publicgroups-heading" >
           Join our active community of fitness enthusiasts and explore public
           groups!
         </h2>
@@ -307,8 +179,12 @@ const Home = () => {
           ))}
         </Box>
       </section>
-      {/* )} */}
-      <Footer />
+      <section id='footer' className='footer'>
+        {/* <p style={{textAlign:'center', padding:'3vh', fontWeight: 'bold'}}>&copy; 2024 fitbuddy.live All rights reserved.</p> */}
+        <p style={{textAlign: 'center', paddingBottom:'3vh'}}><button onClick={() => history('/contactus') } style={{cursor:'pointer'}}>Contact Us</button></p>
+      </section>
+
+      {/* <Footer /> */}
     </div>
   );
 };

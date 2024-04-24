@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import TeamSlider from '../ourteam/TeamSlider';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import {useNavigate} from 'react-router-dom'
 const API_URL = import.meta.env.VITE_API_URL;
 const Footer = () => {
     const [contactName, setContactName] = useState('');
     const [contactEmail, setContactEmail] = useState('');
     const [contactMessage, setContactMessage] = useState('');
+    const history = useNavigate()
 
     const contactSubmitHandler = async (e) => {
         e.preventDefault();
@@ -28,21 +29,21 @@ const Footer = () => {
             const { data } = await axios.post(`${API_URL}/query`, body, config);
             // console.log(data);
             toast.success(data.message);
+            return history('/');
         } catch (err) {
             // console.log(err.stack);
-            toast.error('Please try later!!!');
+            return toast.error('Please try later!!!');
         }
     };
     return (
-        <footer style={{ backgroundColor: 'inherit' }}>
+        <footer style={{ display: 'flex', height: '100vh', width:'100vw', justifyContent:'center', alignItems:'center', backgroundColor:'#f3f3f3' }}>
             <section
                 id="contactus-container"
                 style={{
                     width: '100%',
-                    // margin: "auto",
                     padding: '0 10vw',
-                    backgroundColor: 'black',
-                    // height: "60vh",
+                    backgroundColor: '#f3f3f3',
+                
                 }}
             >
                 <div
@@ -60,7 +61,7 @@ const Footer = () => {
                             marginTop: '20px',
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '1rem',
+                            gap: '1em',
                             minWidth: '300px',
                             width: '55%',
                             paddingBottom: '60px',
@@ -69,8 +70,6 @@ const Footer = () => {
                         <h2
                             style={{
                                 fontSize: '34px',
-                                // backgroundClip: "text",
-                                color: 'pink',
                             }}
                         >
                             Contact Us
@@ -84,14 +83,14 @@ const Footer = () => {
                             required
                             style={{
                                 padding: '4px 10px',
-                                backgroundColor: 'black',
-                                color: 'pink',
+                                
                                 fontSize: '20px',
                                 borderTop: 'none',
                                 borderLeft: 'none',
                                 borderRight: 'none',
-                                borderBottom: '3px solid pink',
+                                borderBottom: '3px solid black',
                                 outline: 'none',
+                                backgroundColor:'inherit'
                             }}
                             onChange={(e) => setContactName(e.target.value)}
                         />
@@ -104,14 +103,13 @@ const Footer = () => {
                             required
                             style={{
                                 padding: '4px 10px',
-                                backgroundColor: 'black',
-                                color: 'pink',
                                 fontSize: '20px',
                                 borderTop: 'none',
                                 borderLeft: 'none',
                                 borderRight: 'none',
-                                borderBottom: '3px solid pink',
+                                borderBottom: '3px solid black',
                                 outline: 'none',
+                                backgroundColor:'inherit'
                             }}
                             onChange={(e) => setContactEmail(e.target.value)}
                         />
@@ -126,14 +124,14 @@ const Footer = () => {
                             required
                             style={{
                                 padding: '0.2rem 0.6rem',
-                                backgroundColor: 'black',
-                                color: 'pink',
+
                                 fontSize: '1.4rem',
                                 borderTop: 'none',
                                 borderLeft: 'none',
                                 borderRight: 'none',
-                                borderBottom: '3px solid pink',
+                                borderBottom: '3px solid black',
                                 // outline: "none",
+                                backgroundColor:'inherit'
                             }}
                             onChange={(e) => setContactMessage(e.target.value)}
                         ></textarea>
@@ -141,14 +139,13 @@ const Footer = () => {
                         <button
                             type="submit"
                             style={{
-                                backgroundColor: 'pink',
                                 padding: '4px 30px',
-                                color: 'black',
                                 fontWeight: 'bold',
                                 justifySelf: 'flex-end',
                                 margin: 'auto',
                                 border: 'none',
                                 borderRadius: '10px',
+                                cursor:'pointer'
                             }}
                         >
                             Submit
