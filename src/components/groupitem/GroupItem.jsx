@@ -9,7 +9,7 @@ const GroupItem = ({ group, id }) => {
   };
 
   return (
-    <button      className="groupitem-container" style={{display: 'flex',backgroundColor:'#f4f4f6',    flexDirection: 'column', gap:'5px', border: 'none', borderRadius: '10px', minWidth:'75px', width: '27%', alignItems: 'center',
+    <button      className="groupitem-container" style={{display: 'flex',backgroundColor:'white',    flexDirection: 'column', gap:'5px', border: 'none', borderRadius: '10px', minWidth:'75px', width: '27%', alignItems: 'center',
   }}
               
           onClick={handleExploreGroup}
