@@ -76,7 +76,7 @@ const UploadImage = ({ picUrl, changePicUrl }) => {
         alignItems: 'center'
       }}
     >
-      <img src={picUrl} alt="Image" srcSet="" height="100px" width="100px" />
+      <img src={picUrl? picUrl: '/Assets/Images/groupimage.png'} alt="Image" srcSet="" height="100px" width="100px" />
       <form
         action=""
         method="post"

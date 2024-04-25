@@ -115,15 +115,14 @@ const Home = () => {
       )}
       {user.isLoggedIn && (
         <>
-          <h1 style={{ textAlign: "center", color: "black" }}>
+          <h1 className='homepage-quote'>
             Welcome to fitbuddy <em>{user?.name}</em>{" "}
           </h1>
-          <h2 style={{ textAlign: "center", color: 'black' }}>
-            Groups : {privateGroups.length}
-          </h2>
+
+          {loadingGroup ? <Loading /> : (
           <Box
             width="100vw"
-            my={2}
+            
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -131,7 +130,6 @@ const Home = () => {
             p={2}
             sx={{ flexWrap: "wrap" }}
           >
-            {loadingGroup && <Loading />}
             {privateGroups.map((group, index) => (
 
 
@@ -145,7 +143,7 @@ const Home = () => {
           
                 <strong style={{fontSize:'0.8rem'}}>{group.name}</strong>
               </button>))}
-          </Box>
+          </Box>)}
         </>
       )}
       <section

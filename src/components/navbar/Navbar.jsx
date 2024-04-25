@@ -92,16 +92,11 @@ const Navbar = ({ logoutUser }) => {
           >
             {userData.isLoggedIn ? (
               <>
-                <Link
-                  to="/profile"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    fontSize: "1rem",
-                  }}
+                <Button onClick={() => {navigate('/profile')} }
+                  
                 >
-                  <strong>PROFILE</strong>
-                </Link>
+                  <strong style={{ color: "black", paddingRight: '30px' }}>PROFILE</strong>
+                </Button>
                 <Button onClick={handleLogout}>
                   <strong style={{ color: "black" }}>
                     Logout
@@ -144,19 +139,12 @@ const Navbar = ({ logoutUser }) => {
           >
             {userData.isLoggedIn && (
               <MenuItem onClick={handleMenuClose}>
-                <Link
-                  to="/profile"
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    fontSize: "1rem",
-                    textAlign: "center",
-                    fontWeight: "bold",
-                    paddingLeft: "8px",
-                  }}
+                <Button
+                  sx={{ color: "black", fontSize: "1rem" }}
+                  onClick={() => navigate('/profile')}
                 >
                   PROFILE
-                </Link>
+                </Button>
               </MenuItem>
             )}
             <MenuItem onClick={handleMenuClose}>

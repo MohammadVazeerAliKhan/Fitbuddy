@@ -87,12 +87,12 @@ const LoginModal = ({ open, onClose, navToSignUp }) => {
     // var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
     // let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-    let regex = new RegExp('/^\w+@[a-zA-Z_]+\.(com)$/');
-    console.log(regex.test(email))
-    if(!regex.test(email)){
-    
-      return toast.warning('Invalid Email address');
-      
+    let regex = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$');
+    console.log(regex.test(email));
+    if (!regex.test(email)) {
+      console.log('Invalid');
+      toast.warning('Invalid Email address');
+      return;
     }
     try {
       const { data } = await axios.post(

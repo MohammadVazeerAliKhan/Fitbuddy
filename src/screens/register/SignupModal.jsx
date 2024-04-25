@@ -11,6 +11,9 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { GoogleLogin } from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 const API_URL = import.meta.env.VITE_API_URL;
@@ -25,6 +28,14 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
   const handleSignup = async (e) => {
     e.preventDefault();
     // Checking for password match
+    let regex = new RegExp('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$');
+    console.log(regex.test(email));
+    if (!regex.test(email)) {
+      console.log('Invalid');
+      toast.warning('Invalid Email address');
+      return;
+    }
+    
     if (password !== confirmPassword) {
       toast.error("Passwords do not match.");
       return;
@@ -58,6 +69,56 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
 
     // console.log(email, password);
   };
+  const handleLoginSuccess = async (response) => {
+    // console.log('Login success:', response);
+    const accessToken = response.credential;
+    const userData = jwtDecode(accessToken);
+    // dispatch()
+
+    const config = {
+      headers: {
+        // Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const body = {
+      ...userData,
+    };
+    try {
+      const { data } = await axios.post(`${API_URL}/user/google`, body, config);
+      console.log(data.data);
+      // toast.success("token: ", data);
+      toast.success("Login successful");
+      try {
+        const decoded = jwtDecode(data.token);
+
+        const { name, email, pic, id } = decoded;
+        console.log(name, email, pic, id);
+        dispatch(updateUser({ name, email, pic, id }));
+        dispatch(login());
+
+        localStorage.setItem("token", data.token);
+        // console.log(user);
+        await onClose();
+        // await onClose();
+      } catch (err) {
+        console.error(err);
+      }
+
+      // Navigate to homepage after login success
+
+      // console.log(userData);
+
+      // Send the access token to your backend for verification and user handling
+    } catch (err) {
+      console.log("err in google login: ", err);
+    }
+  };
+
+  const handleLoginFailure = (error) => {
+    console.error("Login failed:", error);
+  };
+
 
   return (
     <Modal
@@ -67,16 +128,16 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: "12vh",
+        marginTop: "8vh",
       }}
     >
       <Box
         sx={{
           backgroundColor: "white",
-          p: 3,
           borderRadius: 4,
           maxWidth: "80%",
           width: "auto",
+          maxHeight:'85vh'
         }}
       >
         <div style={{ display: "flex" }}>
@@ -90,7 +151,7 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
             <CloseIcon />
           </IconButton>
         </div>
-        <form onSubmit={handleSignup}>
+        <form onSubmit={handleSignup} style={{ width:'90%',margin:'auto', paddingTop: "8px" }}>
           <TextField
             label="User Name"
             type="text"
@@ -101,7 +162,7 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
             autoComplete="username"
             fullWidth
             inputProps={{ minLength: 3 }}
-            margin="normal"
+            sx={{ mb: 2 }}
           />
           <TextField
             label="Email"
@@ -112,7 +173,7 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
             placeholder="Enter Email"
             required
             fullWidth
-            margin="normal"
+            sx={{ mb: 2 }}
           />
           <TextField
             label="Password"
@@ -124,7 +185,7 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
             autoComplete="new-password"
             fullWidth
             inputProps={{ minLength: 8 }}
-            margin="normal"
+            sx={{ mb: 2 }}          
           />
           <TextField
             label="Confirm Password"
@@ -136,22 +197,38 @@ const SignupModal = ({ open, onClose, navToLogin }) => {
             autoComplete="new-password"
             fullWidth
             inputProps={{ minLength: 8 }}
-            margin="normal"
           />
+          <div style={{display:'flex', justifyContent:'center',  padding:'1vh'}}>
 
-          <Typography variant="body1" sx={{ padding: "6px" }}>
+          <Button type="submit" sx={{cursor:'pointer'}} variant="contained" color="primary">
+            Sign Up
+          </Button>
+          </div>
+          
+          
+        </form>
+        <hr />
+        <div style={{display:'flex', justifyContent:'center', alignItems:'center', paddingTop: '1vh'}}>
+          <GoogleOAuthProvider clientId="79886345736-m9qkupb4jaqp34ukqkibtirsjot6u7tc.apps.googleusercontent.com" >
+            <GoogleLogin
+              buttonText="Login with Google"
+              onSuccess={handleLoginSuccess}
+              onFailure={handleLoginFailure}
+              scope="profile email"
+             
+            />
+          </GoogleOAuthProvider>
+          </div>
+          <Typography variant="body1" sx={{ padding: "2vh 6px", textAlign:'center' }}>
             Already have an account?{" "}
             {/* <Link to="/login">
             <strong>Login</strong>
           </Link> */}
-            <Typography variant="contained" onClick={navToLogin}>
+            <Typography variant="contained" sx={{cursor:'pointer'}} onClick={navToLogin}>
               <strong>Login</strong>
             </Typography>
           </Typography>
-          <Button type="submit" variant="contained" color="primary">
-            Register
-          </Button>
-        </form>
+
         <ToastContainer position="top-right" autoClose={3000} />
       </Box>
     </Modal>

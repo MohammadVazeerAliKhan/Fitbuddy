@@ -255,7 +255,7 @@ const PrivateGroup = () => {
                         >
                             <h2>{groupData && groupData.name}</h2>
                             <img
-                                src={groupData.icon}
+                                src={groupData.icon ? groupData.icon : '/Assets/Images/groupimage.png' }
                                 alt="Group Icon"
                                 style={{
                                     maxWidth: '150px',

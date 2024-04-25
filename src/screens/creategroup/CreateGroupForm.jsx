@@ -87,7 +87,7 @@ const CreateGroupForm = () => {
                     }}
                 >
                     <p style={{textAlign:'center'}}>Add Group Icon here</p>
-                    <UploadImage picUrl={groupIcon} changePicUrl={setGroupIcon} />
+                    <UploadImage picUrl={groupIcon? groupIcon:'/Assets/Images/groupimage.png'} changePicUrl={setGroupIcon} />
                 </div>
 
                 <form

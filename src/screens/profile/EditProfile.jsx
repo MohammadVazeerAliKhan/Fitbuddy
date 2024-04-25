@@ -62,14 +62,12 @@ const EditProfile = () => {
   };
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "black" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "white" }}>
       <section
         id="editprofile-container"
         style={{
           minHeight: "80vh",
           padding: "5rem 1.25rem",
-          backgroundColor: "black",
-          color: "white",
         }}
       >
         <h2 style={{ textAlign: "center" }}>Edit Profile</h2>
@@ -114,14 +112,11 @@ const EditProfile = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               style={{
-                padding: "4px",
-                backgroundColor: "black",
-                color: "pink",
                 fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "3px solid pink",
+                borderBottom: "3px solid black",
                 outline: "none",
                 width: "45%",
                 minWidth: '300px'
@@ -137,13 +132,11 @@ const EditProfile = () => {
               onChange={(e) => setAge(e.target.value)}
               style={{
                 padding: "4px 10px",
-                backgroundColor: "black",
-                color: "pink",
                 fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "3px solid pink",
+                borderBottom: "3px solid black",
                 outline: "none",
                 width: "45%",
                 minWidth: '300px'
@@ -159,13 +152,12 @@ const EditProfile = () => {
               onChange={(e) => setHeight(e.target.value)}
               style={{
                 padding: "4px 10px",
-                backgroundColor: "black",
-                color: "pink",
+               
                 fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "3px solid pink",
+                borderBottom: "3px solid black",
                 outline: "none",
                 width: "45%",
                 minWidth: '300px'
@@ -181,13 +173,11 @@ const EditProfile = () => {
               onChange={(e) => setWeight(e.target.value)}
               style={{
                 padding: "4px 10px",
-                backgroundColor: "black",
-                color: "pink",
                 fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "3px solid pink",
+                borderBottom: "3px solid black",
                 outline: "none",
                 width: "45%",
                 
@@ -204,13 +194,12 @@ const EditProfile = () => {
               onChange={(e) => setFitnessGoals(e.target.value)}
               style={{
                 padding: "4px 10px",
-                backgroundColor: "black",
-                color: "pink",
+
                 fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
-                borderBottom: "3px solid pink",
+                borderBottom: "3px solid black",
                 outline: "none",
                 width: "90%",
                 minWidth: '300px'
