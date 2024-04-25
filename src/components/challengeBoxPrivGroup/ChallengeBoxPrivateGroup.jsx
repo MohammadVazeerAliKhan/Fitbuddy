@@ -41,6 +41,130 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
         getChallenges();
     }, []);
 
+
+    const handleUpdateProgress = async (challengeId) => {
+        try {
+            const token = localStorage.getItem('token');
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            };
+
+
+            // Subtract one day from the current date
+            const currentDate = new Date();
+
+            // Subtract one day from the current date
+            const previousDate = new Date(currentDate);
+            previousDate.setDate(currentDate.getDate() - 1);
+
+            // Convert the previous date to ISO string
+            const previousDateISOString = previousDate.toISOString();
+            const body = {
+                date: previousDateISOString.split('T')[0],
+                completed: true,
+            };
+
+            // Update progress on server
+            const response = await axios.put(
+                `${API_URL}/challenges/${challengeId}/progress/`,
+                body,
+                config
+            );
+
+            // console.log('API Call !!', response.data);
+            // Re-fetch the updated progress data
+            const progressResponse = await axios.get(`${API_URL}/challenges/${id}`, config);
+            const updatedProgress = progressResponse.data.data.progress || [];
+            // Update the challenges state with the updated progress
+            setChallenges((prevState) => {
+                prevState.forEach((challenge) => {
+                    if (challenge._id === challengeId) {
+                        return {
+                            ...challenge,
+                            progress: updatedProgress.find(
+                                (progress) => progress.user?._id === user.id
+                            ),
+                        };
+                    }
+                    return challenge;
+                });
+                return prevState;
+            });
+
+            handleShowProgress(challengeId, true);
+
+            toast('Progress Updated..');
+        } catch (err) {
+            console.error('Failed to Update Progress:', err);
+            toast.error('Failed to Update Progress!!');
+        }
+    };
+
+
+    // const handleUpdateProgress = async (challengeId) => {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const config = {
+    //             headers: {
+    //                 'Authorization': `Bearer ${token}`,
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         };
+
+    //         // Get the current date
+    //         const currentDate = new Date();
+
+    //         // Subtract one day from the current date
+    //         const previousDate = new Date(currentDate);
+    //         previousDate.setDate(currentDate.getDate() - 1);
+
+    //         // Convert the previous date to ISO string
+    //         const previousDateISOString = previousDate.toISOString();
+    //         const body = {
+    //             date: previousDateISOString.split('T')[0],
+    //             completed: true,
+    //         };
+
+    //         // Update progress on the server
+    //         const response = await axios.put(
+    //             `${API_URL}/challenges/${challengeId}/progress/`,
+    //             body,
+    //             config
+    //         );
+
+    //         // console.log('API Call !!', response.data);
+    //         // Re-fetch the updated progress data
+    //         const progressResponse = await axios.get(${API_URL}/challenges/${id}, config);
+    //         const updatedProgress = progressResponse.data.data.progress || [];
+
+    //         // Update the challenges state with the updated progress
+    //         setChallenges((prevState) => {
+    //             prevState.forEach((challenge) => {
+    //                 if (challenge._id === challengeId) {
+    //                     return {
+    //                         ...challenge,
+    //                         progress: updatedProgress.find(
+    //                             (progress) => progress.user?._id === user.id
+    //                         ),
+    //                     };
+    //                 }
+    //                 return challenge;
+    //             });
+    //             return prevState;
+    //         });
+
+    //         handleShowProgress(challengeId, true);
+
+    //         toast('Progress Updated..');
+    //     } catch (err) {
+    //         console.error('Failed to Update Progress:', err);
+    //         toast.error('Failed to Update Progress!!');
+    //     }
+    // };
+
     const handleJoinChallenge = async (challengeId) => {
         const token = localStorage.getItem('token');
         const config = {
@@ -106,65 +230,65 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
         }
     };
 
-    const handleUpdateProgress = async (challengeId) => {
-        try {
-            const token = localStorage.getItem('token');
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-            };
+    // const handleUpdateProgress = async (challengeId) => {
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const config = {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         };
 
-            // Get the current date
-            const currentDate = new Date();
+    //         // Get the current date
+    //         const currentDate = new Date();
 
-            // Subtract one day from the current date
-            const previousDate = new Date(currentDate);
-            previousDate.setDate(currentDate.getDate() - 1);
+    //         // Subtract one day from the current date
+    //         const previousDate = new Date(currentDate);
+    //         previousDate.setDate(currentDate.getDate() - 1);
 
-            // Convert the previous date to ISO string
-            const previousDateISOString = previousDate.toISOString();
-            const body = {
-                date: previousDateISOString.split('T')[0],
-                completed: true,
-            };
+    //         // Convert the previous date to ISO string
+    //         const previousDateISOString = previousDate.toISOString();
+    //         const body = {
+    //             date: previousDateISOString.split('T')[0],
+    //             completed: true,
+    //         };
 
-            // Update progress on the server
-            const response = await axios.put(
-                `${API_URL}/challenges/${challengeId}/progress/`,
-                body,
-                config
-            );
+    //         // Update progress on the server
+    //         const response = await axios.put(
+    //             `${API_URL}/challenges/${challengeId}/progress/`,
+    //             body,
+    //             config
+    //         );
 
-            // console.log('API Call !!', response.data);
-            // Re-fetch the updated progress data
-            const progressResponse = await axios.get(`${API_URL}/challenges/${id}`, config);
-            const updatedProgress = progressResponse.data.data.progress || [];
+    //         // console.log('API Call !!', response.data);
+    //         // Re-fetch the updated progress data
+    //         const progressResponse = await axios.get(`${API_URL}/challenges/${id}`, config);
+    //         const updatedProgress = progressResponse.data.data.progress || [];
 
-            // Update the challenges state with the updated progress
-            setChallenges(
-                challenges.map((challenge) => {
-                    if (challenge._id === challengeId) {
-                        return {
-                            ...challenge,
-                            progress: updatedProgress.find(
-                                (progress) => progress.user?._id === user.id
-                            ),
-                        };
-                    }
-                    return challenge;
-                })
-            );
+    //         // Update the challenges state with the updated progress
+    //         setChallenges(
+    //             challenges.map((challenge) => {
+    //                 if (challenge._id === challengeId) {
+    //                     return {
+    //                         ...challenge,
+    //                         progress: updatedProgress.find(
+    //                             (progress) => progress.user?._id === user.id
+    //                         ),
+    //                     };
+    //                 }
+    //                 return challenge;
+    //             })
+    //         );
 
-            handleShowProgress(challengeId, true);
+    //         handleShowProgress(challengeId, true);
 
-            toast('Progress Updated..');
-        } catch (err) {
-            console.error('Failed to Update Progress:', err);
-            toast.error('Failed to Update Progress!!');
-        }
-    };
+    //         toast('Progress Updated..');
+    //     } catch (err) {
+    //         console.error('Failed to Update Progress:', err);
+    //         toast.error('Failed to Update Progress!!');
+    //     }
+    // };
 
     const getDateShow = (date) => {
         const currentDate = new Date(date);
