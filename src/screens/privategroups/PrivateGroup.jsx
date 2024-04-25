@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { login, logout, updateUser } from '../../slices/authSlice';
 import axios from 'axios';
-import SearchUser from '../../components/SearchUser/SearchUser';
 import ChallengeBoxPrivateGroup from '../../components/challengeBoxPrivGroup/ChallengeBoxPrivateGroup';
 const API_URL = import.meta.env.VITE_API_URL;
 import Loading from '../../components/loading/Loading.jsx';
@@ -306,7 +305,7 @@ const PrivateGroup = () => {
                             </div>
                             {showSearchUser && (
                                 <div className="modal-overlay">
-                                    <div
+                                    {/* <div
                                         className="modal"
                                         style={{
                                             display: 'flex',
@@ -347,12 +346,8 @@ const PrivateGroup = () => {
                                             handleCloseAddMember={handleCloseAddMember}
                                             id={id}
                                         />
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="box invite-friends">
+                                    </div> */}
+                                    <div className="box invite-friends">
                             <h2 style={{ paddingBottom: '0.6rem' }}>Invite Friends</h2>
                             <form onSubmit={handleWhatsappInvite}>
                                 <input
@@ -383,6 +378,12 @@ const PrivateGroup = () => {
                                 </button>
                             </form>
                         </div>
+
+                                </div>
+                            )}
+                        </div>
+
+                        
                         {showCalender && (
                             <ChallengeBoxPrivateGroup
                                 showCalender={showCalender}
