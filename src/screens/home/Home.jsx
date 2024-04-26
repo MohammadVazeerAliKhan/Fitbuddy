@@ -139,7 +139,7 @@ const Home = () => {
                 }}
                 onClick={() => handleNavigatePrivateGroup(group._id)}
               >
-                <img src={group.icon} alt="groupIcon" width='50%' style={{borderRadius: '10px 10px 0 0', minWidth: '75px', minHeight: '75px',}} />
+                <img src={group.icon ? group.icon : '/Assets/Images/groupimage.png'} alt="groupIcon" width='50%' style={{borderRadius: '10px 10px 0 0', minWidth: '75px', minHeight: '75px',}} />
           
                 <strong style={{fontSize:'0.8rem'}}>{group.name}</strong>
               </button>))}

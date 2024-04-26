@@ -12,7 +12,7 @@ const GroupItem = ({ group, id }) => {
     <button      className="groupitem-container" style={{display: 'flex',backgroundColor:'white',    flexDirection: 'column', gap:'5px', border: 'none', borderRadius: '10px', minWidth:'75px', width: '27vw', alignItems: 'center',
   }}
               
-          onClick={handleExploreGroup}
+          // onClick={handleExploreGroup}
         >
           <img src={group.imageUrl} alt="groupIcon" width='50%'  style={{borderRadius: '10px 10px 0 0',cursor:'pointer', minWidth: '75px', minHeight: '75px',}} />
           
