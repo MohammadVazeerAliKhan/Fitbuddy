@@ -2,7 +2,7 @@
 // Imports
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/navbar/Navbar.jsx';
-import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import ContactUs from './components/footer/Footer.jsx';
 import { jwtDecode } from 'jwt-decode';
 import Home from './screens/home/Home.jsx';
